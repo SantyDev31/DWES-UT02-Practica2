@@ -1,5 +1,37 @@
 <?php 
-// Documentacion usada para este apartado: https://www.softwaretestinghelp.com/php/php-arrays/
+/*
+Documentacion usada para este apartado: https://www.softwaretestinghelp.com/php/php-arrays/
+
+PHP Indexed Arrays
+An indexed array is an array with a numeric index. The important point to remember is that the index starts with zero, not 1.
+There are two methods to create an indexed array.
+Method 1: By assigning the index automatically.
+Syntax:
+$var = array (value1, value2, value3,...);
+Alternatively, you may use the following syntax:
+$var = [value1, value2, value3,...];
+
+*/
+
+// PHP Associative Arrays
+// An associative array is an array with numeric keys. There are two methods to create an associative array.
+// Method 1: By assigning the index automatically.
+// Syntax:
+// $var = array (key1 => value1, key2 => value2, key3 => value3,...);
+// Alternatively, you may use the following syntax:
+// $var = [key1 => value1, key2 => value2, key3 => value3,...];
+
+# PHP Multidimensional Arrays
+# A multidimensional array contains one or more arrays.
+# Syntax:
+# $var = array
+# (
+# array(key1 => value1, key2 => value2, key3 => value3,...),
+# array(key1 => value1, key2 => value2, key3 => value3,...),
+# array(key1 => value1, key2 => value2, key3 => value3,...),
+# ...
+#)
+
 
 $socios = array(
     "socio1" => array(
