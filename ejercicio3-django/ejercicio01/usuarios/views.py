@@ -8,6 +8,7 @@ def usuario_view(request):
         "nombre": "Laura",
         "apellidos": "Gómez Pérez",
         "dni": "12345678A",
+        "edad": 20,
         "email": "laura.gomez@example.com",
         "telefono": "654321987",
         "pagos": {
@@ -31,7 +32,16 @@ def usuario_view(request):
         <body>
             <h1>Información personal</h1>
             <p><strong>Nombre:</strong> {datos['nombre']}</p>
-            <p><strong>Apellidos:</strong> {datos['apellidos']}</p>
+            <p><strong>Apellidos:</strong> {datos['apellidos']}</p>"""
+    if(datos['edad'] >= 18):
+        html += f"""
+            <p><strong>Edad:</strong> <span style="color:green">{datos['edad']}</span></p>
+        """
+    else:
+        html += f"""
+            <p><strong>Edad:</strong> {datos['edad']}</p>
+        """
+    html += f"""
             <p><strong>Email:</strong> {datos['email']}</p>
             <p><strong>Teléfono:</strong> {datos['telefono']}</p>
             <h1>Pagos de la persona</h1>
