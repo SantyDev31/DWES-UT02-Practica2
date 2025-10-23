@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:c="jakarta.tags.core">
+
+<h:head>
+    <title>Ejemplo02 usando JSF con Jakarta EE 10</title>
+    <meta charset="UTF-8"/>
+</h:head>
+
+<h:body>
+    <h1>Hola desde JSF, </h1>
+    <h2>Ejercicio ampliado con bucles y condicionales</h2>
+
+    <h2>Lista de usuarios</h2>
+    <h:dataTable value="#{helloBean.usuarios}" var="usuarios" border="1">
+        <h:column>
+            <f:facet name="header"> Nombre</f:facet>
+            #{usuarios.nombre}
+        </h:column>
+        <h:column>
+            <f:facet name="header"> Apellidos</f:facet>
+            #{usuarios.apellido}
+        </h:column>
+        <h:column>
+            <f:facet name="header"> DNI</f:facet>
+            #{usuarios.dni}
+        </h:column>
+        <h:column>
+            <f:facet name="header"> Email</f:facet>
+            #{usuarios.email}
+        </h:column>
+        <h:column>
+            <f:facet name="header"> Edad</f:facet>
+            #{usuarios.edad}
+        </h:column>
+        <h:column>
+            <f:facet name="header"> Pagos</f:facet>
+            <ul>
+                <ui:repeat value="#{usuarios.pagos.entrySet()}" var="p">
+                    <li>
+                        <h:panelGroup rendered="#{p.value gt 0}">
+                            #{p.key}: #{p.value} 
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{p.value le 0 or p.value eq null}">
+                            #{p.key}: <span style="color:red;">NO PAGADO</span>
+                        </h:panelGroup>
+                    </li>
+                </ui:repeat>
+            </ul>
+        </h:column>
+        <h:column>
+            <f:facet name="header"> Total pagado</f:facet>
+            #{usuarios.totalPayAmount}
+        </h:column>
+        <h:column>
+            <h:panelGroup rendered="#{usuarios.totalPayAmount lt 100}">
+                <span style="color:red; font-weight: bold;">El usuario no está al día con la cuota</span>
+            </h:panelGroup>
+            <h:panelGroup rendered="#{usuarios.totalPayAmount ge 100}">
+                <span style="color:green; font-weight: bold;">El usuario está al corriente de pagos</span>
+            </h:panelGroup>
+        </h:column> 
+    </h:dataTable>
+</h:body>
+</html>
